@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 export const CompanyDetailsPreview: React.FC<CompanyDetails> = ({
   email,
   companyName,
@@ -22,36 +22,102 @@ export const CompanyDetailsPreview: React.FC<CompanyDetails> = ({
       {companyLogo ? (
         <img src={companyLogo} alt="Company Logo" className="h-10 rounded-md" />
       ) : (
-        <div className="rounded-full bg-neutral-100 h-10 w-10 animate-pulse" />
+        <div className="relative h-10 w-10 rounded-full bg-background overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full overflow-hidden">
+            <FlickeringGrid
+              className="w-full h-full"
+              squareSize={2}
+              gridGap={4}
+              color="#0B99FF"
+              maxOpacity={0.5}
+              flickerChance={2}
+            />
+          </div>
+        </div>
       )}
     </div>
     {companyName ? (
       <p className="text-2xl font-medium">{companyName}</p>
     ) : (
-      <div className="rounded-md bg-neutral-100 h-5 w-5/6  animate-pulse mb-4" />
+      <div className="relative h-5 w-5/6 mb-4 rounded-md bg-background overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 rounded-full overflow-hidden">
+          <FlickeringGrid
+            className="w-full h-full"
+            squareSize={2}
+            gridGap={4}
+            color="#0B99FF"
+            maxOpacity={0.5}
+            flickerChance={2}
+          />
+        </div>
+      </div>
     )}
     {email ? (
       <p className="text-neutral-500/90 text-sm mb-3">{email}</p>
     ) : (
-      <div className="rounded-md bg-neutral-100 h-4 w-4/6 animate-pulse my-2" />
+      <div className="relative h-4 w-4/6 my-4 rounded-md bg-background overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 rounded-full overflow-hidden">
+          <FlickeringGrid
+            className="w-full h-full"
+            squareSize={2}
+            gridGap={4}
+            color="#0B99FF"
+            maxOpacity={0.5}
+            flickerChance={2}
+          />
+        </div>
+      </div>
     )}
     <div className="text-xs text-neutral-500/80">
       {companyAddress ? (
         <p>{companyAddress}</p>
       ) : (
-        <div className="rounded-md bg-neutral-100 h-4 w-3/6 animate-pulse my-2" />
+        <div className="relative h-4 w-3/6 my-2 rounded-md bg-background overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full overflow-hidden">
+            <FlickeringGrid
+              className="w-full h-full"
+              squareSize={2}
+              gridGap={4}
+              color="#0B99FF"
+              maxOpacity={0.5}
+              flickerChance={2}
+            />
+          </div>
+        </div>
       )}
       {companyAddress || companyState || companyZip ? (
         <p className="mb-0.5">
           {companyCity}, {companyState} {companyZip}
         </p>
       ) : (
-        <div className="rounded-md bg-neutral-100 h-4 w-4/6 animate-pulse my-3" />
+        <div className="relative h-4 w-4/6 my-3 rounded-md bg-background overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full overflow-hidden">
+            <FlickeringGrid
+              className="w-full h-full"
+              squareSize={2}
+              gridGap={4}
+              color="#0B99FF"
+              maxOpacity={0.5}
+              flickerChance={2}
+            />
+          </div>
+        </div>
       )}
       {companyCountry ? (
         <p className="mb-1">{companyCountry}</p>
       ) : (
-        <div className="rounded-md bg-neutral-100 h-4 w-3/6 animate-pulse my-2" />
+        <div className="relative h-4 w-3/6 my-2 rounded-md bg-background overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full overflow-hidden">
+            <FlickeringGrid
+              className="w-full h-full"
+              squareSize={2}
+              gridGap={4}
+              color="#0B99FF"
+              maxOpacity={0.5}
+              flickerChance={2}
+            />
+          </div>
+        </div>
       )}
       {companyTaxId && <p>Tax ID:{companyTaxId}</p>}
     </div>

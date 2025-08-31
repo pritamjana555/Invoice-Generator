@@ -8,12 +8,14 @@ type CustomNumberProps = {
   label?: string;
   placeholder: string;
   variableName: string;
+  className?: string;
 };
 
 export const CustomNumberInput = ({
   label,
   placeholder,
   variableName,
+  className,
 }: CustomNumberProps) => (
   <Controller
     render={({ field: { onChange, value } }) => (

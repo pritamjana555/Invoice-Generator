@@ -8,7 +8,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, label, ...props }, ref) => (
     <div
       className={`flex  items-center relative ${
-        label ? "h-[52px]" : "h-[42px]"
+        label ? "h-[42px]" : "h-[32px]"
       }`}
     >
       {label && (

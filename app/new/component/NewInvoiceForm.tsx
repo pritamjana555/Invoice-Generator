@@ -5,7 +5,7 @@ import { FormSteps } from "@/app/component/form/step/fromSteps";
 import { UserDataPreview } from "@/app/new/component/userDataPreview";
 import { useForm, FormProvider } from "react-hook-form";
 import { useEffect, useState } from "react";
-
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 export const NewInvoiceForm = () => {
   const methods = useForm();
   const [isClient, setIsClient] = useState(false);
@@ -27,7 +27,7 @@ export const NewInvoiceForm = () => {
     <>
       {isClient ? (
         <FormProvider {...methods}>
-          <div className="max-w-lg min-h-screen w-full h-full p-4 md:p-12 border-r border-dashed flex flex-col justify-between">
+          <div className="max-w-lg min-h-screen w-3/5 h-full lg:p-10 sm:p-0  border-r border-dashed flex flex-col justify-between">
             <div>
               <div className="flex gap-2 items-center">
                 <Image
@@ -39,15 +39,18 @@ export const NewInvoiceForm = () => {
                 />
                 <div>
                   <p className="font-semibold">Invoice Generator</p>
-                  <p className="text-orange-500 text-sm">By Prolab</p>
+                  <p className="text-orange-500 text-sm">By Pritam</p>
                 </div>
               </div>
+
               <UserInputForm />
+
             </div>
             <FormSteps />
           </div>
           <div className="relative min-h-screen h-full w-full flex justify-center items-center p-4 md:p-0">
-            <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            {/* <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div> */}
+            
             <UserDataPreview />
           </div>
         </FormProvider>

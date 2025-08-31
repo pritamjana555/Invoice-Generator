@@ -8,12 +8,14 @@ type CustomInputProps = {
   label?: string;
   placeholder: string;
   variableName: string;
+  className?: string;
 };
 
 const CustomTextInput = ({
   label,
   placeholder,
   variableName,
+  className,
 }: CustomInputProps) => (
   <Controller
     render={({ field: { onChange, value } }) => (
@@ -21,6 +23,7 @@ const CustomTextInput = ({
         label={label}
         placeholder={placeholder}
         value={value}
+        
         type="text"
         onChange={(e) => {
           const updatedValue = e.target.value;
