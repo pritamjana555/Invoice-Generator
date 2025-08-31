@@ -76,7 +76,7 @@ export const InvoiceDetailsForm = () => {
                     </div>
                     <div className="w-14">
                       <Input
-                        placeholder="Qat"
+                        placeholder="Qty"
                         value={`${qty || ""}`}
                         type="text"
                         pattern="[0-9]*"

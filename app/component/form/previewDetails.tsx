@@ -5,8 +5,13 @@ import { PaymentDetailsPreview } from "@/app/component/form/paymentDetails/payme
 import { YourDetailsPreview } from "@/app/component/form/yourDetails/yourDetailsPreview";
 import { ChevronDown } from "lucide-react";
 import { Magnetic } from "@/components/ui/magnetic";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 
-// types
 interface PreviewDetailsProps {
   yourDetails: YourDetails;
   companyDetails: CompanyDetails;
@@ -28,10 +33,30 @@ export const PreviewDetails = ({
     <Magnetic intensity={0.3} actionArea="global" range={10}>
       <div className="">
         <Magnetic intensity={0.1} actionArea="global" range={200}>
-          <div className="overflow-hidden bg-white rounded-2xl shadow-md shadow-slate-200 border border-dashed justify-center items-center">
-            
+          <div className=" 
+    w-full h-auto
+    sm:w-[90%] sm:h-[600px]
+    md:w-[450px] md:h-[750px]
+    lg:w-[560px] lg:h-[840px]
+    xl:w-[600px] xl:h-[866px]
+    2xl:w-[640px] 2xl:h-[880px] overflow-hidden bg-white rounded-2xl shadow-md shadow-slate-200 border border-dashed justify-center items-center">
+
             {/* Invoice Terms */}
-            <InvoiceTermsPreview {...invoiceTerms} onClick={onClick} />
+            <HoverCard openDelay={0} closeDelay={0}>
+              <HoverCardTrigger><InvoiceTermsPreview {...invoiceTerms} onClick={onClick} /></HoverCardTrigger>
+              <HoverCardContent
+                side="top"
+                align="center"
+                className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95 duration-100"
+              >
+                <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
+                  5
+                </span>
+                Invoice terms
+              </HoverCardContent>
+            </HoverCard>
+
+
 
             {/* Your Details + Company Details */}
             <div className="border-b grid grid-cols-2 justify-between border-dashed">
@@ -48,7 +73,21 @@ export const PreviewDetails = ({
                     <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 -rotate-45 group-hover:block hidden absolute bottom-0 right-0 " />
                   </>
                 )}
-                <YourDetailsPreview {...yourDetails} />
+                <HoverCard openDelay={0} closeDelay={0}>
+                  <HoverCardTrigger><YourDetailsPreview {...yourDetails} /></HoverCardTrigger>
+                  <HoverCardContent
+                    side="top"
+                    align="center"
+                    className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95"
+                  >
+                    <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
+                      1
+                    </span>
+                    Your company
+                  </HoverCardContent>
+                </HoverCard>
+
+
               </div>
 
               {/* Company Details */}
@@ -64,18 +103,59 @@ export const PreviewDetails = ({
                     <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 -rotate-45 group-hover:block hidden absolute bottom-0 right-0 " />
                   </>
                 )}
-                <CompanyDetailsPreview {...companyDetails} />
+                <HoverCard openDelay={0} closeDelay={0}>
+                  <HoverCardTrigger><CompanyDetailsPreview {...companyDetails} /></HoverCardTrigger>
+                  <HoverCardContent
+                    side="top"
+                    align="center"
+                    className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95"
+                  >
+                    <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
+                      2
+                    </span>
+                    your client
+                  </HoverCardContent>
+                </HoverCard>
+
+
               </div>
             </div>
 
             {/* Invoice Details + Payment Details */}
             <div className="flex flex-col justify-between">
               <div className="border-b justify-between border-dashed">
-                <InvoiceDetailsPreview {...invoiceDetails} onClick={onClick} />
+                <HoverCard openDelay={0} closeDelay={0}>
+                  <HoverCardTrigger><InvoiceDetailsPreview {...invoiceDetails} onClick={onClick} /></HoverCardTrigger>
+                  <HoverCardContent
+                    side="top"
+                    align="center"
+                    className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95"
+                  >
+                    <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
+                      3
+                    </span>
+                    Invoice details
+                  </HoverCardContent>
+                </HoverCard>
+
               </div>
               <div>
                 {/* ✅ PaymentDetails fixed */}
-                <PaymentDetailsPreview {...paymentDetails} onClick={onClick} />
+                <HoverCard openDelay={0} closeDelay={0}>
+                  <HoverCardTrigger><PaymentDetailsPreview {...paymentDetails} onClick={onClick} /></HoverCardTrigger>
+                  <HoverCardContent
+                    side="top"
+                    align="center"
+                    sideOffset={6}
+                    className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95"
+                  >
+                    <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
+                      4
+                    </span>
+                    Payment method
+                  </HoverCardContent>
+                </HoverCard>
+
               </div>
             </div>
           </div>

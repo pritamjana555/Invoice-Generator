@@ -2,7 +2,11 @@
 import { PreviewDetails } from "@/app/component/form/previewDetails";
 import { useData } from "@/app/hooks/useData";
 import { useFormContext } from "react-hook-form";
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 export const UserDataPreview = () => {
   const {
     companyDetails,
@@ -21,6 +25,7 @@ export const UserDataPreview = () => {
   return (
     <PreviewDetails
       onClick={onClick}
+      
       companyDetails={companyDetails}
       invoiceDetails={invoiceDetails}
       invoiceTerms={invoiceTerms}

@@ -12,8 +12,8 @@ export const InvoiceDetailsPreview: React.FC<
     (currency) => currency.value.toLowerCase() === currencyType.toLowerCase()
   )?.details;
   const subtotal = calculateTotalAmount(items);
-  const discountAmount = subtotal - (discount ? +discount : 0);
-  const taxAmount = discountAmount * ((taxRate ? +taxRate : 0) / 100);
+  const discountAmount = subtotal - (discount ? parseFloat(discount.toString()) : 0);
+  const taxAmount = discountAmount * ((taxRate ? parseFloat(taxRate.toString()) : 0) / 100);
   const totalAmount = discountAmount + taxAmount;
 
   return (
@@ -21,7 +21,6 @@ export const InvoiceDetailsPreview: React.FC<
       className="group cursor-pointer relative w-full"
       onClick={() => onClick && onClick("3")}
     >
-      {/* Hover corners */}
       {!!onClick && (
         <>
           <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-orange-500 rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
@@ -77,15 +76,17 @@ export const InvoiceDetailsPreview: React.FC<
               {itemDescription}
             </p>
             <div className="sm:pl-6 md:pl-10 grid grid-cols-3 items-center gap-2 sm:gap-4">
-              <p className="truncate text-xs sm:text-sm font-medium text-gray-600">
+              <p className="truncate text-xs sm:text-sm font-medium text-gray-600 overflow-hidden">
                 {qty || "-"}
               </p>
-              <p className="truncate text-xs sm:text-sm font-medium text-gray-600">
-                {amount ? addCommasToNumber(amount) : ""}
+              <p className="truncate text-xs sm:text-sm font-medium text-gray-600 overflow-hidden">
+                {amount !== undefined ? addCommasToNumber(parseFloat(amount.toString())) : ""}
               </p>
-              <p className="text-xs sm:text-sm font-medium text-gray-600 text-right">
+              <p className="text-xs sm:text-sm font-medium text-gray-600 text-right overflow-hidden">
                 {currencyDetails?.currencySymbol}
-                {amount ? addCommasToNumber((qty ? qty : 1) * amount) : ""}
+                {amount !== undefined
+                  ? addCommasToNumber((qty ? qty : 1) * parseFloat(amount.toString()))
+                  : ""}
               </p>
             </div>
           </div>
@@ -121,7 +122,7 @@ export const InvoiceDetailsPreview: React.FC<
               <p className="text-xs sm:text-sm font-medium text-gray-600">Discount</p>
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 {currencyDetails?.currencySymbol}
-                {discount ? addCommasToNumber(+discount) : ""}
+                {discount ? addCommasToNumber(parseFloat(discount.toString())) : ""}
               </p>
             </div>
           )}
@@ -133,7 +134,7 @@ export const InvoiceDetailsPreview: React.FC<
               </p>
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 {currencyDetails?.currencySymbol}
-                {addCommasToNumber(+taxAmount.toFixed(2))}
+                {addCommasToNumber(parseFloat(taxAmount.toFixed(2)))}
               </p>
             </div>
           )}
@@ -142,7 +143,7 @@ export const InvoiceDetailsPreview: React.FC<
             <p className="text-xs sm:text-sm font-medium text-gray-600">Amount</p>
             <p className="text-sm sm:text-base font-semibold">
               {currencyDetails?.currencySymbol}
-              {addCommasToNumber(totalAmount)}
+              {addCommasToNumber(parseFloat(totalAmount.toFixed(2)))}
             </p>
           </div>
         </div>
@@ -154,14 +155,15 @@ export const InvoiceDetailsPreview: React.FC<
 /* Helpers */
 const calculateTotalAmount = (items: Item[]): number =>
   items.reduce((total, item) => {
-    const quantity = item.qty ? +item.qty : 1;
-    const amount = item.amount ? +item.amount : 0;
+    const quantity = item.qty ? parseInt(item.qty.toString()) : 1;
+    const amount = item.amount ? parseFloat(item.amount.toString()) : 0;
     return total + quantity * amount;
   }, 0);
 
 const addCommasToNumber = (number: number): string => {
-  let numberString = number.toString();
-  const parts = numberString.split(".");
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return parts.join(".");
+  if (isNaN(number)) return "";
+  return number.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 };
