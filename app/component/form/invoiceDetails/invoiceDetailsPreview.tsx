@@ -18,7 +18,7 @@ export const InvoiceDetailsPreview: React.FC<
 
   return (
     <div
-      className="group cursor-pointer relative w-full"
+      className="group cursor-pointer  w-full"
       onClick={() => onClick && onClick("3")}
     >
       {!!onClick && (
@@ -32,7 +32,7 @@ export const InvoiceDetailsPreview: React.FC<
 
       {/* Header Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 items-center">
-        <div className="py-4 px-4 sm:px-6 md:px-10">
+        <div className="py-4 px-4 sm:px-6 md:px-7">
           <p className="text-[10px] sm:text-[11px] text-neutral-400 font-medium uppercase">
             Description
           </p>
@@ -54,7 +54,7 @@ export const InvoiceDetailsPreview: React.FC<
           )}
         </div>
 
-        <div className="py-4 px-4 sm:px-6 md:px-10 grid grid-cols-3 items-center gap-2 sm:gap-4">
+        <div className="py-4 px-4 sm:px-6 md:px-7 grid grid-cols-3 items-center gap-2 sm:gap-4">
           <p className="text-[10px] sm:text-[11px] text-neutral-400 font-medium uppercase">QTY</p>
           <p className="text-[10px] sm:text-[11px] text-neutral-400 font-medium uppercase">Price</p>
           <p className="text-[10px] sm:text-[11px] text-neutral-400 font-medium uppercase text-right">
@@ -64,12 +64,15 @@ export const InvoiceDetailsPreview: React.FC<
       </div>
 
       {/* Items list */}
-      <div className="overflow-x-auto">
+      <div  className={`overflow-x-auto ${
+    items.length > 6 ? " overflow-y-scroll" : ""
+  }`}
+>
         {items.map(({ itemDescription, amount, qty }, index) => (
           <div
             className={`grid grid-cols-1 sm:grid-cols-2 items-center border-b ${
               index === 0 ? "border-t" : ""
-            } border-dashed px-4 sm:px-6 md:px-10 py-3`}
+            } border-dashed px-4 sm:px-6 md:px-9 py-1`}
             key={index}
           >
             <p className="truncate text-xs sm:text-sm font-medium text-gray-600">
@@ -97,10 +100,10 @@ export const InvoiceDetailsPreview: React.FC<
       <div className="grid grid-cols-1 sm:grid-cols-2">
         {note ? (
           <div className="pt-6 pb-4">
-            <p className="text-xs font-medium text-neutral-400 pb-1 px-4 sm:px-6 md:px-10">
+            <p className="text-xs font-medium text-neutral-400 pb-1 px-4 sm:px-6 md:px-7">
               Note
             </p>
-            <p className="text-xs sm:text-sm font-medium text-neutral-400 px-4 sm:px-6 md:px-10 break-words">
+            <p className="text-xs sm:text-sm font-medium text-neutral-400 px-4 sm:px-6 md:px-7 break-words">
               {note}
             </p>
           </div>
@@ -109,7 +112,7 @@ export const InvoiceDetailsPreview: React.FC<
         )}
 
         <div>
-          <div className="flex justify-between items-center px-4 sm:px-6 md:px-10 border-b border-dashed py-3">
+          <div className="flex justify-between items-center px-4 sm:px-6 md:px-7 border-b border-dashed py-1">
             <p className="text-xs sm:text-sm font-medium text-gray-600">Subtotal</p>
             <p className="text-xs sm:text-sm font-medium text-gray-600">
               {currencyDetails?.currencySymbol}
@@ -118,7 +121,7 @@ export const InvoiceDetailsPreview: React.FC<
           </div>
 
           {discount && (
-            <div className="flex justify-between items-center px-4 sm:px-6 md:px-10 border-b border-dashed py-3">
+            <div className="flex justify-between items-center px-4 sm:px-6 md:px-7 border-b border-dashed py-1">
               <p className="text-xs sm:text-sm font-medium text-gray-600">Discount</p>
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 {currencyDetails?.currencySymbol}
@@ -128,7 +131,7 @@ export const InvoiceDetailsPreview: React.FC<
           )}
 
           {taxRate && (
-            <div className="flex justify-between items-center px-4 sm:px-6 md:px-10 border-b border-dashed py-3">
+            <div className="flex justify-between items-center px-4 sm:px-6 md:px-7 border-b border-dashed py-1">
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 Tax ({taxRate})%
               </p>
@@ -139,7 +142,7 @@ export const InvoiceDetailsPreview: React.FC<
             </div>
           )}
 
-          <div className="flex justify-between items-center px-4 sm:px-6 md:px-10 py-3">
+          <div className="flex justify-between items-center px-4 sm:px-6 md:px-5 py-1.5">
             <p className="text-xs sm:text-sm font-medium text-gray-600">Amount</p>
             <p className="text-sm sm:text-base font-semibold">
               {currencyDetails?.currencySymbol}

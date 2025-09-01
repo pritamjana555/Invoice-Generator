@@ -34,12 +34,12 @@ export const PreviewDetails = ({
       <div className="">
         <Magnetic intensity={0.1} actionArea="global" range={200}>
           <div className=" 
-    w-full h-auto flex-shrink-0
-    sm:w-[90%] sm:h-[600px]
-    md:w-[450px] md:h-[750px]
-    lg:w-[560px] lg:h-[840px]
-    xl:w-[600px] xl:h-[866px]
-    2xl:w-[640px] 2xl:h-[880px]
+    w-full h-full
+    sm:w-[90%] sm:h-[700px]
+    md:w-[450px] md:h-[850px]
+    lg:w-[560px] lg:h-[940px]
+    xl:w-[600px] xl:h-[966px]
+    2xl:w-[640px] 2xl:h-[980px]
      ipad:w-[500px] ipad:h-[800px]
     ipad-air:w-[480px] ipad-air:h-[780px]
     ipad-mini:w-[420px] ipad-mini:h-[700px] 
