@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { currencyList } from "@/lib/currency";
 import { ChevronDown } from "lucide-react";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
@@ -7,21 +7,23 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid";
 export const InvoiceDetailsPreview: React.FC<
   InvoiceItemDetails & { onClick?: (step: string) => void }
 > = ({ note, discount, taxRate, items, currency = "INR", onClick }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []); // ensures client-only rendering for hydration-sensitive parts
+
   const currencyType = currency;
   const currencyDetails = currencyList.find(
     (currency) => currency.value.toLowerCase() === currencyType.toLowerCase()
   )?.details;
+
   const subtotal = calculateTotalAmount(items);
   const discountAmount = subtotal - (discount ? parseFloat(discount.toString()) : 0);
   const taxAmount = discountAmount * ((taxRate ? parseFloat(taxRate.toString()) : 0) / 100);
   const totalAmount = discountAmount + taxAmount;
 
   return (
-    <div
-      className="group cursor-pointer  w-full"
-      onClick={() => onClick && onClick("3")}
-    >
-      {!!onClick && (
+    <div className="group cursor-pointer w-full" onClick={() => onClick && onClick("3")}>
+      {!!onClick && mounted && (
         <>
           <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-orange-500 rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
           <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-orange-500 -rotate-[135deg] group-hover:block hidden absolute top-0 right-0" />
@@ -38,7 +40,7 @@ export const InvoiceDetailsPreview: React.FC<
           </p>
           {items.some((item) => item.itemDescription?.trim() !== "") ? (
             <span className="block text-xs sm:text-sm font-medium text-gray-600 mt-1 break-words" />
-          ) : (
+          ) : mounted ? (
             <div className="relative h-4 w-4/6 my-3 rounded-md bg-background overflow-hidden flex items-center justify-center">
               <div className="absolute inset-0 rounded-full overflow-hidden">
                 <FlickeringGrid
@@ -51,7 +53,7 @@ export const InvoiceDetailsPreview: React.FC<
                 />
               </div>
             </div>
-          )}
+          ) : null}
         </div>
 
         <div className="py-4 px-4 sm:px-6 md:px-7 grid grid-cols-3 items-center gap-2 sm:gap-4">
@@ -64,10 +66,7 @@ export const InvoiceDetailsPreview: React.FC<
       </div>
 
       {/* Items list */}
-      <div  className={`overflow-x-auto ${
-    items.length > 6 ? " overflow-y-scroll" : ""
-  }`}
->
+      <div className={`overflow-x-auto ${items.length > 6 ? "overflow-y-scroll" : ""}`}>
         {items.map(({ itemDescription, amount, qty }, index) => (
           <div
             className={`grid grid-cols-1 sm:grid-cols-2 items-center border-b ${
@@ -75,13 +74,9 @@ export const InvoiceDetailsPreview: React.FC<
             } border-dashed px-4 sm:px-6 md:px-9 py-1`}
             key={index}
           >
-            <p className="truncate text-xs sm:text-sm font-medium text-gray-600">
-              {itemDescription}
-            </p>
+            <p className="truncate text-xs sm:text-sm font-medium text-gray-600">{itemDescription}</p>
             <div className="sm:pl-6 md:pl-10 grid grid-cols-3 items-center gap-2 sm:gap-4">
-              <p className="truncate text-xs sm:text-sm font-medium text-gray-600 overflow-hidden">
-                {qty || "-"}
-              </p>
+              <p className="truncate text-xs sm:text-sm font-medium text-gray-600 overflow-hidden">{qty || "-"}</p>
               <p className="truncate text-xs sm:text-sm font-medium text-gray-600 overflow-hidden">
                 {amount !== undefined ? addCommasToNumber(parseFloat(amount.toString())) : ""}
               </p>
@@ -98,17 +93,11 @@ export const InvoiceDetailsPreview: React.FC<
 
       {/* Footer */}
       <div className="grid grid-cols-1 sm:grid-cols-2">
-        {note ? (
+        {note && (
           <div className="pt-6 pb-4">
-            <p className="text-xs font-medium text-neutral-400 pb-1 px-4 sm:px-6 md:px-7">
-              Note
-            </p>
-            <p className="text-xs sm:text-sm font-medium text-neutral-400 px-4 sm:px-6 md:px-7 break-words">
-              {note}
-            </p>
+            <p className="text-xs font-medium text-neutral-400 pb-1 px-4 sm:px-6 md:px-7">Note</p>
+            <p className="text-xs sm:text-sm font-medium text-neutral-400 px-4 sm:px-6 md:px-7 break-words">{note}</p>
           </div>
-        ) : (
-          <div />
         )}
 
         <div>
@@ -125,16 +114,14 @@ export const InvoiceDetailsPreview: React.FC<
               <p className="text-xs sm:text-sm font-medium text-gray-600">Discount</p>
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 {currencyDetails?.currencySymbol}
-                {discount ? addCommasToNumber(parseFloat(discount.toString())) : ""}
+                {addCommasToNumber(parseFloat(discount.toString()))}
               </p>
             </div>
           )}
 
           {taxRate && (
             <div className="flex justify-between items-center px-4 sm:px-6 md:px-7 border-b border-dashed py-1">
-              <p className="text-xs sm:text-sm font-medium text-gray-600">
-                Tax ({taxRate})%
-              </p>
+              <p className="text-xs sm:text-sm font-medium text-gray-600">Tax ({taxRate})%</p>
               <p className="text-xs sm:text-sm font-medium text-gray-600">
                 {currencyDetails?.currencySymbol}
                 {addCommasToNumber(parseFloat(taxAmount.toFixed(2)))}
@@ -165,7 +152,7 @@ const calculateTotalAmount = (items: Item[]): number =>
 
 const addCommasToNumber = (number: number): string => {
   if (isNaN(number)) return "";
-  return number.toLocaleString(undefined, {
+  return number.toLocaleString("en-US", { // enforce consistent locale
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
