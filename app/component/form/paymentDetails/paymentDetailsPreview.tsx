@@ -158,9 +158,9 @@ export const PaymentDetailsPreview: React.FC<
         {currencyDetails && (
           <div className="flex gap-2 md:justify-between items-center w-full">
             <div className="flex gap-3 items-center">
-              <currencyDetails.icon className="w-7 h-7 md:w-8 md:h-8 rounded-full" />
+              <currencyDetails.icon className="w-4 h-4 md:w-6 md:h-6 rounded-full" />
               <div>
-                <p className="font-medium text-sm md:text-base">
+                <p className="font-medium text-xs md:text-sm">
                   {currencyDetails.currencyName}
                 </p>
                 <p className="text-xxs md:text-xs text-neutral-400">

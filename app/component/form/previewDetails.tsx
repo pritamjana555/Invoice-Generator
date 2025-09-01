@@ -30,16 +30,20 @@ export const PreviewDetails = ({
   onClick,
 }: PreviewDetailsProps) => {
   return (
-    <Magnetic intensity={0.3} actionArea="global" range={10}>
+    <Magnetic intensity={0.3} actionArea="global" range={100}>
       <div className="">
         <Magnetic intensity={0.1} actionArea="global" range={200}>
           <div className=" 
-    w-full h-auto
+    w-full h-auto flex-shrink-0
     sm:w-[90%] sm:h-[600px]
     md:w-[450px] md:h-[750px]
     lg:w-[560px] lg:h-[840px]
     xl:w-[600px] xl:h-[866px]
-    2xl:w-[640px] 2xl:h-[880px] overflow-hidden bg-white rounded-2xl shadow-md shadow-slate-200 border border-dashed justify-center items-center">
+    2xl:w-[640px] 2xl:h-[880px]
+     ipad:w-[500px] ipad:h-[800px]
+    ipad-air:w-[480px] ipad-air:h-[780px]
+    ipad-mini:w-[420px] ipad-mini:h-[700px] 
+    overflow-hidden bg-white rounded-2xl shadow-md shadow-slate-200 border border-dashed justify-center items-center">
 
             {/* Invoice Terms */}
             <HoverCard openDelay={0} closeDelay={0}>
@@ -47,7 +51,7 @@ export const PreviewDetails = ({
               <HoverCardContent
                 side="top"
                 align="center"
-                className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95 duration-100"
+                className="bg-black text-white text-xs w-fit pl-1.5 py-1.5 rounded-full shadow-lg flex items-center gap-2  font-medium animate-in fade-in-0 zoom-in-95 duration-100"
               >
                 <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
                   5
@@ -78,7 +82,7 @@ export const PreviewDetails = ({
                   <HoverCardContent
                     side="top"
                     align="center"
-                    className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95"
+                    className="bg-black text-white w-fit pl-1.5 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-xs font-medium animate-in fade-in-0 zoom-in-95"
                   >
                     <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
                       1
@@ -108,7 +112,7 @@ export const PreviewDetails = ({
                   <HoverCardContent
                     side="top"
                     align="center"
-                    className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95"
+                    className="bg-black text-white w-fit pl-1.5 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-xs font-medium animate-in fade-in-0 zoom-in-95"
                   >
                     <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
                       2
@@ -129,7 +133,7 @@ export const PreviewDetails = ({
                   <HoverCardContent
                     side="top"
                     align="center"
-                    className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95"
+                    className="bg-black text-white w-fit pl-1.5 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-xs font-medium animate-in fade-in-0 zoom-in-95"
                   >
                     <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
                       3
@@ -146,8 +150,7 @@ export const PreviewDetails = ({
                   <HoverCardContent
                     side="top"
                     align="center"
-                    sideOffset={6}
-                    className="bg-black text-white w-fit px-3 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in-0 zoom-in-95"
+                    className="bg-black text-white w-fit pl-1.5 py-1.5 rounded-full shadow-lg flex items-center gap-2 text-xs font-medium animate-in fade-in-0 zoom-in-95"
                   >
                     <span className="bg-gray-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] shadow-sm">
                       4

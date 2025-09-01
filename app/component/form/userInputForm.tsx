@@ -13,7 +13,7 @@ export const UserInputForm = () => {
   const step = useGetValue("step", getInitialValue("step", "1"));
 
   return (
-    <div className="">
+    <div className="p-3">
       <div className={step === "1" ? "block" : "hidden"}>
         <YourDetailsForm />
       </div>

@@ -95,7 +95,7 @@ export const DownloadInvoiceButton = () => {
     <div className="flex h-[calc(100vh-208px)] justify-center items-center">
       <div className="flex flex-col items-center">
         <h1 className="text-4xl font-semibold pb-6">Your invoice is ready</h1>
-        <p className="text-neutral-500 text-md pb-7 text-center">
+        <p className="text-neutral-500 text-md pb-7 text-align">
           Please review the details carefully before downloading your invoice.
         </p>
 
@@ -128,9 +128,9 @@ export const DownloadInvoiceButton = () => {
           variant="outline"
           onClick={handleCreateNew}
           type="button"
-          className="w-40 h-10 rounded-lg text-sm"
+          className="w-25 h-10 rounded-lg text-xs"
         >
-          <RotateCcw className="mr-2 h-5 w-5" /> Create New
+          <RotateCcw className="mr-2 h-3 w-3" /> Create New
         </Button>
       </div>
     </div>
