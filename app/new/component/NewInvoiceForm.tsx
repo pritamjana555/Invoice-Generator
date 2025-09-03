@@ -56,10 +56,10 @@ export const NewInvoiceForm = () => {
             <div>
               <div className="flex gap-2 items-center pl-6 pt-5 max-[760px]:rounded-tl-lg max-[760px]:rounded-tr-lg max-[760px]:shadow-[0_4px_16px_rgba(0,0,0,0.4)] p-4 bg-white">
                 <Image
-                  src="/android-chrome-512x512.png"
-                  width={40}
-                  height={40}
-                  className="rounded-lg"
+                  src="/logo.svg"
+                  width={60}
+                  height={60}
+                  className="h-auto w-12 md:w-16"
                   alt="logo"
                 />
                 <div>
