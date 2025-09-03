@@ -1,16 +1,28 @@
-/* eslint-disable @next/next/no-img-element */
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { currencyList } from "@/lib/currency";
 import { ChevronDown } from "lucide-react";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { motion, useMotionTemplate } from "framer-motion";
+import { useScrollContext } from "../../../context/ScrollContext";
+
 
 export const InvoiceDetailsPreview: React.FC<
   InvoiceItemDetails & { onClick?: (step: string) => void }
 > = ({ note, discount, taxRate, items, currency = "INR", onClick }) => {
   const [mounted, setMounted] = useState(false);
-
+const { bgOpacity } = useScrollContext();
+      const bg = useMotionTemplate`rgba(0,0,0,${bgOpacity})`;
   useEffect(() => setMounted(true), []); 
+const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 760);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
   const currencyType = currency;
   const currencyDetails = currencyList.find(
     (currency) => currency.value.toLowerCase() === currencyType.toLowerCase()
@@ -22,7 +34,7 @@ export const InvoiceDetailsPreview: React.FC<
   const totalAmount = discountAmount + taxAmount;
 
   return (
-    <div className="group cursor-pointer w-full" onClick={() => onClick && onClick("3")}>
+    <motion.div style={isMobile ? { backgroundColor: bg } : {}} className="group cursor-pointer w-full" onClick={() => onClick && onClick("3")}>
       {!!onClick && mounted && (
         <>
           <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-[#002147] rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
@@ -138,7 +150,7 @@ export const InvoiceDetailsPreview: React.FC<
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

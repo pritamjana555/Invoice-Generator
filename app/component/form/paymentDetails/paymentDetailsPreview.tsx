@@ -1,6 +1,10 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import { currencyList } from "@/lib/currency";
 import { ChevronDown } from "lucide-react";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { motion, useMotionTemplate } from "framer-motion";
+import { useScrollContext } from "../../../context/ScrollContext";
 
 export const PaymentDetailsPreview: React.FC<
   PaymentDetails & { onClick?: (step: string) => void }
@@ -14,13 +18,22 @@ export const PaymentDetailsPreview: React.FC<
   currency = "INR",
   onClick,
 }) => {
+  
+  const { bgOpacity } = useScrollContext();
+  const bg = useMotionTemplate`rgba(0,0,0,${bgOpacity})`;
   const currencyDetails = currencyList.find(
     (currencyDetails) =>
       currencyDetails.value.toLowerCase() === currency.toLowerCase()
   )?.details;
-
+const [isMobile, setIsMobile] = useState(false);
+useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 760);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
   return (
-    <div
+    <motion.div style={isMobile ? { backgroundColor: bg } : {}}
       className="grid grid-cols-1 md:grid-cols-2 group cursor-pointer relative"
       onClick={() => onClick && onClick("4")}
     >
@@ -172,6 +185,6 @@ export const PaymentDetailsPreview: React.FC<
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };

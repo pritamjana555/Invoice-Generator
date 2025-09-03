@@ -4,6 +4,8 @@ import { useData } from "@/app/hooks/useData";
 import { useFormContext } from "react-hook-form";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
+
 
 
 export const UserDataPreview = () => {
@@ -22,6 +24,7 @@ export const UserDataPreview = () => {
   };
 
   return (
+   
     <PreviewDetails
     
       onClick={onClick}
