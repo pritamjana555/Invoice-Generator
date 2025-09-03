@@ -2,6 +2,9 @@
 import { PreviewDetails } from "@/app/component/form/previewDetails";
 import { useData } from "@/app/hooks/useData";
 import { useFormContext } from "react-hook-form";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 export const UserDataPreview = () => {
   const {
@@ -20,6 +23,7 @@ export const UserDataPreview = () => {
 
   return (
     <PreviewDetails
+    
       onClick={onClick}
       
       companyDetails={companyDetails}

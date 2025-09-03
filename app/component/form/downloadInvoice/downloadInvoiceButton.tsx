@@ -104,11 +104,12 @@ export const DownloadInvoiceButton = () => {
           disabled={status === "downloading"}
           onClick={handleDownload}
           type="button"
-          className="w-11/12 h-12 rounded-lg text-md mb-4"
+          className="w-11/12 rounded-lg text-md mb-4 bg-black hover:bg-neutral-800 active:scale-[0.98] hover:scale-[1.01]  gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs  h-9 px-4 has-[>svg]:px-3 group relative overflow-hidden  text-white font-gtpro  text-sm lg:text-base pr-4 lg:pr-6 py-2 lg:py-5 cursor-pointer mt-4 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center
+          "
         >
           {status === "not-downloaded" && (
             <>
-              <Download className="mr-2 h-6 w-6" /> Download Invoice
+              <Download className="mr-2 h-6 w-6 " /> Download Invoice
             </>
           )}
           {status === "downloading" && (
@@ -128,7 +129,7 @@ export const DownloadInvoiceButton = () => {
           variant="outline"
           onClick={handleCreateNew}
           type="button"
-          className="w-25 h-10 rounded-lg text-xs"
+          className="w-25 h-10 rounded-lg text-xs active:scale-[0.98] hover:scale-[1.01]"
         >
           <RotateCcw className="mr-2 h-3 w-3" /> Create New
         </Button>

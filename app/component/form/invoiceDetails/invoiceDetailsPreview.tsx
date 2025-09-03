@@ -9,7 +9,7 @@ export const InvoiceDetailsPreview: React.FC<
 > = ({ note, discount, taxRate, items, currency = "INR", onClick }) => {
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []); // ensures client-only rendering for hydration-sensitive parts
+  useEffect(() => setMounted(true), []); 
 
   const currencyType = currency;
   const currencyDetails = currencyList.find(
@@ -25,10 +25,10 @@ export const InvoiceDetailsPreview: React.FC<
     <div className="group cursor-pointer w-full" onClick={() => onClick && onClick("3")}>
       {!!onClick && mounted && (
         <>
-          <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-orange-500 rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
-          <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-orange-500 -rotate-[135deg] group-hover:block hidden absolute top-0 right-0" />
-          <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-orange-500 rotate-45 group-hover:block hidden absolute bottom-0 left-0" />
-          <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-orange-500 -rotate-45 group-hover:block hidden absolute bottom-0 right-0" />
+          <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-[#002147] rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
+          <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-[#002147] -rotate-[135deg] group-hover:block hidden absolute top-0 right-0" />
+          <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-[#002147] rotate-45 group-hover:block hidden absolute bottom-0 left-0" />
+          <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-[#002147] -rotate-45 group-hover:block hidden absolute bottom-0 right-0" />
         </>
       )}
 
@@ -101,7 +101,7 @@ export const InvoiceDetailsPreview: React.FC<
         )}
 
         <div>
-          <div className="flex justify-between items-center px-4 sm:px-6 md:px-7 border-b border-dashed py-1">
+          <div className="flex justify-between items-center pl-5 px-4 sm:px-6 md:px-7 border-b border-dashed py-1">
             <p className="text-xs sm:text-sm font-medium text-gray-600">Subtotal</p>
             <p className="text-xs sm:text-sm font-medium text-gray-600">
               {currencyDetails?.currencySymbol}

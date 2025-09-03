@@ -3,7 +3,7 @@ import CustomNumberInput from "@/app/component/ui/customNumberInput";
 import ImageInput from "@/app/component/ui/imageInput";
 
 export const YourDetailsForm = () => (
-  <div className="pt-24">
+  <div className="pt-24 max-[760px]:pt-0">
     <p className="text-2xl font-semibold pb-3">Your Details (From)</p>
     <CustomTextInput
       label="Email"

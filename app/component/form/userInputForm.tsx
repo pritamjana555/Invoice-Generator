@@ -1,5 +1,7 @@
 "use client";
 
+import { NewInvoiceForm } from "@/app/new/component/NewInvoiceForm";
+import { Suspense } from "react";
 import { DownloadInvoiceButton } from "@/app/component/form/downloadInvoice/downloadInvoiceButton";
 import { InvoiceDetailsForm } from "@/app/component/form/invoiceDetails/invoiceDetailsForm";
 import { InvoiceTermsForm } from "@/app/component/form/invoiceTerms/invoiceTermsForm";
@@ -13,7 +15,7 @@ export const UserInputForm = () => {
   const step = useGetValue("step", getInitialValue("step", "1"));
 
   return (
-    <div className="p-3">
+    <div className="">
       <div className={step === "1" ? "block" : "hidden"}>
         <YourDetailsForm />
       </div>

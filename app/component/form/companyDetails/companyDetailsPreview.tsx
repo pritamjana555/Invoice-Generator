@@ -37,7 +37,7 @@ export const CompanyDetailsPreview: React.FC<CompanyDetails> = ({
       )}
     </div>
     {companyName ? (
-      <p className="text-2xl font-medium">{companyName}</p>
+      <p className="text-xl max-[760px]:text-lg font-medium">{companyName}</p>
     ) : (
       <div className="relative h-5 w-5/6 mb-4 rounded-md bg-background overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 rounded-full overflow-hidden">
@@ -53,7 +53,7 @@ export const CompanyDetailsPreview: React.FC<CompanyDetails> = ({
       </div>
     )}
     {email ? (
-      <p className="text-neutral-500/90 text-sm mb-3">{email}</p>
+      <p className="text-neutral-500/90 text-xs max-[760px]:break-words mb-3">{email}</p>
     ) : (
       <div className="relative h-4 w-4/6 my-4 rounded-md bg-background overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 rounded-full overflow-hidden">
@@ -68,7 +68,7 @@ export const CompanyDetailsPreview: React.FC<CompanyDetails> = ({
         </div>
       </div>
     )}
-    <div className="text-xs text-neutral-500/80">
+    <div className="text-[70%] text-neutral-500/80">
       {companyAddress ? (
         <p>{companyAddress}</p>
       ) : (

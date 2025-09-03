@@ -18,7 +18,7 @@ export const InvoiceDetailsForm = () => {
   return (
     <Controller
       render={({ field: { onChange, value } }) => (
-        <div className="pt-24">
+        <div className="pt-24 max-[760px]:pt-0">
           <p className="text-2xl font-semibold pb-3">Invoice Details</p>
           <div className="flex flex-col gap-6">
             <div>
@@ -141,7 +141,7 @@ export const InvoiceDetailsForm = () => {
                     onChange([...value, { itemDescription: "" }]);
                   }}
                   type="button"
-                  className="flex justify-center items-center text-orange-500 font-medium text-sm gap-2"
+                  className="flex justify-center items-center text-slate-900 font-medium text-sm gap-2"
                 >
                   <Plus className="w-4 h-4" />
                   <p>Add Item</p>

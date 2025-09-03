@@ -2,7 +2,7 @@ import CustomTextInput from "@/app/component/ui/customTextInput";
 import CustomNumberInput from "@/app/component/ui/customNumberInput";
 
 export const PaymentDetailsForm = () => (
-  <div className="pt-24">
+  <div className="pt-24 max-[760px]:pt-0 max-[760px]:bg-white">
     <p className="text-2xl font-semibold pb-3">Payment Details</p>
     <CustomTextInput
       label="Bank name"

@@ -3,7 +3,7 @@ import CustomTextInput from "@/app/component/ui/customTextInput";
 import DateInput from "@/app/component/ui/dateInput";
 
 export const InvoiceTermsForm = () => (
-  <div className="pt-24">
+  <div className="pt-24 max-[760px]:pt-0">
     <p className="text-2xl font-semibold pb-3">Invoice terms</p>
     <CustomTextInput
       label="Invoice number"

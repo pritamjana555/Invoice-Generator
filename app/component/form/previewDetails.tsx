@@ -26,23 +26,26 @@ export const PreviewDetails = ({
   companyDetails,
   invoiceDetails,
   paymentDetails,
-  invoiceTerms,
+  invoiceTerms, 
   onClick,
 }: PreviewDetailsProps) => {
   return (
-    <Magnetic intensity={0.3} actionArea="global" range={100}>
+   
       <div className="">
         <Magnetic intensity={0.1} actionArea="global" range={200}>
           <div className=" 
-    w-full h-auto overflow-y-scroll
-    sm:w-[90%] sm:h-[600px]
-    md:w-[450px] md:h-[750px]
-    lg:w-[560px] lg:h-[840px]
-    xl:w-[600px] xl:h-[866px]
-    2xl:w-[640px] 2xl:h-[880px]
-     ipad:w-[500px] ipad:h-[800px]
-    ipad-air:w-[480px] ipad-air:h-[780px]
-    ipad-mini:w-[420px] ipad-mini:h-[700px] 
+          
+    w-full h-auto 
+    max-[760px]:scale-x-90
+    max-[760px]:scale-y-90
+    max-[760px]:sticky max-[760px]:top-0
+    md:w-[450px]
+    lg:w-[560px] 
+    xl:w-[600px] 
+    2xl:w-[640px] 
+     ipad:w-[500px] 
+    ipad-air:w-[480px] 
+    ipad-mini:w-[420px] 
     overflow-hidden bg-white rounded-2xl shadow-md shadow-slate-200 border border-dashed justify-center items-center">
 
             {/* Invoice Terms */}
@@ -71,10 +74,10 @@ export const PreviewDetails = ({
               >
                 {!!onClick && (
                   <>
-                    <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
-                    <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 -rotate-[135deg] group-hover:block hidden absolute top-0 right-0" />
-                    <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 rotate-45 group-hover:block hidden absolute bottom-0 left-0" />
-                    <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 -rotate-45 group-hover:block hidden absolute bottom-0 right-0 " />
+                    <ChevronDown className="animate-pulse w-5 h-5 text-[#002147] rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
+                    <ChevronDown className="animate-pulse w-5 h-5 text-[#002147] -rotate-[135deg] group-hover:block hidden absolute top-0 right-0" />
+                    <ChevronDown className="animate-pulse w-5 h-5 text-[#002147] rotate-45 group-hover:block hidden absolute bottom-0 left-0" />
+                    <ChevronDown className="animate-pulse w-5 h-5 text-[#002147] -rotate-45 group-hover:block hidden absolute bottom-0 right-0 " />
                   </>
                 )}
                 <HoverCard openDelay={0} closeDelay={0}>
@@ -101,10 +104,10 @@ export const PreviewDetails = ({
               >
                 {!!onClick && (
                   <>
-                    <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
-                    <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 -rotate-[135deg] group-hover:block hidden absolute top-0 right-0" />
-                    <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 rotate-45 group-hover:block hidden absolute bottom-0 left-0" />
-                    <ChevronDown className="animate-pulse w-5 h-5 text-orange-500 -rotate-45 group-hover:block hidden absolute bottom-0 right-0 " />
+                    <ChevronDown className="animate-pulse w-5 h-5 text-[#002147] rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
+                    <ChevronDown className="animate-pulse w-5 h-5 text-[#002147] -rotate-[135deg] group-hover:block hidden absolute top-0 right-0" />
+                    <ChevronDown className="animate-pulse w-5 h-5 text-[#002147] rotate-45 group-hover:block hidden absolute bottom-0 left-0" />
+                    <ChevronDown className="animate-pulse w-5 h-5 text-[#002147] -rotate-45 group-hover:block hidden absolute bottom-0 right-0 " />
                   </>
                 )}
                 <HoverCard openDelay={0} closeDelay={0}>
@@ -164,6 +167,6 @@ export const PreviewDetails = ({
           </div>
         </Magnetic>
       </div>
-    </Magnetic>
+    
   );
 };

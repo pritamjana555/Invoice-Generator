@@ -16,7 +16,7 @@ export const YourDetailsPreview: React.FC<YourDetails> = ({
     <p className="text-[11px] text-neutral-400 font-semibold uppercase pb-3.5">
       From
     </p>
-    <div className="h-10 mb-3">
+    <div className="h-10 mb-3 overflow-hidden">
       {yourLogo ? (
         <img src={yourLogo} alt="Company Logo" className="h-10 rounded-md" />
       ) : (
@@ -35,7 +35,7 @@ export const YourDetailsPreview: React.FC<YourDetails> = ({
       )}
     </div>
     {yourName ? (
-      <p className="text-2xl font-medium">{yourName}</p>
+      <p className="text-xl font-medium max-[760px]:text-lg">{yourName}</p>
     ) : (
        <div className="relative h-5 w-5/6 mb-4 rounded-md bg-background overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 rounded-full overflow-hidden">
@@ -51,7 +51,7 @@ export const YourDetailsPreview: React.FC<YourDetails> = ({
         </div>
     )}
     {yourEmail ? (
-      <p className="text-neutral-500/90 text-sm mb-3">{yourEmail}</p>
+      <p className="text-neutral-500/90 text-xs mb-3 max-[760px]:break-words">{yourEmail}</p>
     ) : (
       <div className="relative h-4 w-4/6 my-4 rounded-md bg-background overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 rounded-full overflow-hidden">
@@ -66,7 +66,7 @@ export const YourDetailsPreview: React.FC<YourDetails> = ({
           </div>
         </div>
     )}
-    <div className="text-xs text-neutral-500/80">
+    <div className="text-[70%] text-neutral-500/80">
       {yourAddress ? (
         <p>{yourAddress}</p>
       ) : (

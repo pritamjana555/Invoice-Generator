@@ -7,7 +7,9 @@
     text-wrap: balance;
   }
 }
-
+.main{
+  margin-top: 50vh;
+}
 .PopoverContent {
   width: var(--radix-popover-trigger-width);
   max-height: var(--radix-popover-content-available-height);
@@ -45,3 +47,10 @@
   scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
 }
 
+/* @media (max-width: 760px) {
+  
+}.scroll-sticky{
+  position:absolute;
+  z-index: 1;
+} */
+ 
