@@ -53,10 +53,13 @@ useEffect(() => {
                   alt="logo"
                 />
                 <div>
-                  <p className="font-semibold ">Invoice Generator</p>
+                  <span className="relative inline-block">
+                    <span className="absolute inset-0 -skew-x-10 bg-gradient-to-r from-orange-100 to-pink-100"></span>
+                  <p className="font-medium font-gtalpina text-xl relative">Invoice Generator</p>
+                  </span>
                 </div>
               </div>
-              <div  ref={targetRef} className="max-[760px]:bg-white  max-[1025px]:(-ml-12, w-[calc(100%+80px), px-12, p-6] ) p-6">
+              <div  ref={targetRef} className="max-[760px]:bg-white  max-[1025px]:(-ml-12, w-[calc(100%+80px), px-12, p-6] ) p-6 font-gtpro">
                 <UserInputForm />
               </div>
             </div>
@@ -70,7 +73,7 @@ useEffect(() => {
             className="min-h-[866px] max-[760px]:sticky max-[760px]:top-0 relative h-full w-full flex justify-center items-center p-4 md:p-0 shadow-slate-900 "
           >
 
-            <div className="absolute  inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div className="absolute  inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] max-[760px]:bg-[radial-gradient(#C0C0C0_0.5px,transparent_1px)] [background-size:16px_16px]"></div>
 
             <UserDataPreview />
             </motion.div>

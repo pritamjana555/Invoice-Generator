@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss"
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -18,15 +18,34 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        border: "var(--color-border)",
+        ring: "var(--color-ring)",
+        background: "var(--color-background)",
+        foreground: "var(--color-foreground)",
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        accent: "var(--color-accent)",
+        muted: "var(--color-muted)",
+        destructive: "var(--color-destructive)",
+        card: "var(--color-card)",
+        popover: "var(--color-popover)",
+        sidebar: "var(--color-sidebar)",
+
+      },
+      fontFamily: {
+        gtpro: ["var(--font-gtpro)", "system-ui", "sans-serif"],
+        gtalpina: ["var(--font-gtAlpina)", "serif"],
+        nanum: ["var(--font-nanum-pen)", "cursive"],
+      },
       fontSize: {
-        xxs: '11px'
+        xxs: "11px",
       },
       screens: {
-       
-      ipad: "834px", 
-      "ipad-air": "820px", 
-      'ipad-mini': '744px',
-    },
+        ipad: "834px",
+        "ipad-air": "820px",
+        "ipad-mini": "744px",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -43,7 +62,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('@tailwindcss/forms'),],
-} satisfies Config
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/forms"),
+  ],
+}
 
 export default config

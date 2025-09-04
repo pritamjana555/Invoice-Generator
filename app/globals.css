@@ -46,11 +46,3 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
 }
-
-/* @media (max-width: 760px) {
-  
-}.scroll-sticky{
-  position:absolute;
-  z-index: 1;
-} */
- 

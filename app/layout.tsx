@@ -3,12 +3,34 @@ import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import Script from "next/script";
 import { ScrollProvider } from "./context/ScrollContext";
+import localFont from "next/font/local";
+import { nanumPenScript } from "./fonts";
 export const viewport: Viewport = {
   themeColor: "#f97316",
   width: "device-width",
   initialScale: 1,
 };
+const gtpro = localFont({
+  src: [
+    {
+      path: "../public/font/GTWalsheimPro-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-gtpro",
+});
 
+const gtAlpina = localFont({
+  src: [
+    {
+      path: "../public/font/GT-Alpina-Condensed-Light-Trial.woff",
+      weight: "400, 500, 600,700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-gtAlpina",
+});
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'),
   alternates: {
@@ -52,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${gtpro.variable} ${gtAlpina.variable} ${nanumPenScript.variable}`}>
       <head>
         <link
           rel="apple-touch-icon"
@@ -71,6 +93,7 @@ export default function RootLayout({
           sizes="16x16"
           href="/favicon"
         />
+        
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#f97316" />
         <meta name="msapplication-TileColor" content="#f97316" />

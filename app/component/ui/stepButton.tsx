@@ -33,7 +33,7 @@ const StepButton = ({ isPrevious, title, step }: StepButtonProps) => (
                   clipRule="evenodd"
                 />
               </svg>
-              <p className="text-xs font-medium text-neutral-500 ">Back </p>
+              <p className="text-xs font-medium text-neutral-500 font-gtpro">Back </p>
             </div>
             <p className="font-medium text-sm text-left">{title}</p>
           </button>
@@ -46,7 +46,7 @@ const StepButton = ({ isPrevious, title, step }: StepButtonProps) => (
             className="flex-1  hover:bg-neutral-100 rounded-md p-3"
           >
             <div className="flex gap-2 justify-end items-center">
-              <p className="text-xs font-medium text-neutral-500 ">Next </p>
+              <p className="text-xs font-medium text-neutral-500 font-gtpro">Next </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
