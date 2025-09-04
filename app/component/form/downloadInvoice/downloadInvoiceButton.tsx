@@ -87,6 +87,7 @@ export const DownloadInvoiceButton = ({ onGeneratePdf }: DownloadInvoiceButtonPr
                 paymentDetails={paymentDetails}
                 yourDetails={yourDetails}
                 countryImageUrl={countryImageUrl}
+                onGeneratePdf={() => {}}
               />
             </Page>
           </Document>
