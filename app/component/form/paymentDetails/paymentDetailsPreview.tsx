@@ -34,7 +34,7 @@ useEffect(() => {
   }, []);
   return (
     <motion.div style={isMobile ? { backgroundColor: bg } : {}}
-      className="grid grid-cols-1 md:grid-cols-2 group cursor-pointer relative"
+      className=" grid grid-cols-1 md:grid-cols-2 group cursor-pointer relative"
       onClick={() => onClick && onClick("4")}
     >
       {/* Hover corners */}

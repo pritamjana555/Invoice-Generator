@@ -51,20 +51,21 @@ export const PreviewDetails = ({
     >
       <Magnetic intensity={0.1} actionArea="global" range={200}>
         <div className=" 
-          
-    w-full h-auto 
-    
-    max-[760px]:scale-x-75
-    max-[760px]:scale-y-75
-    max-[760px]:sticky max-[760px]:top-0
-    md:w-[450px]
+          max-[760px]:sticky max-[760px]:top-0
+          max-[760px]:-mt-20
+          max-[760px]:mb-10
+          max-[760px]:scale-[0.60]
+          h-full
+          max-[760px]:overflow-y-scroll
+     max-[760px]:h-screen
+     
+         md:w-[450px]
     lg:w-[560px] 
     xl:w-[600px] 
     2xl:w-[640px] 
-     ipad:w-[500px] 
-    ipad-air:w-[480px] 
-    ipad-mini:w-[420px] 
-    overflow-hidden bg-white  rounded-2xl shadow-md shadow-slate-200 max-[760px]:shadow-gray-400 border border-dashed max-[760px]:border-none justify-center items-center">
+    w-full 
+    mx-auto
+    overflow-hidden bg-white mt-0 rounded-2xl shadow-md shadow-slate-200 max-[760px]:shadow-gray-400 border border-dashed max-[760px]:border-none justify-center items-center">
 
           {/* Invoice Terms */}
           <HoverCard openDelay={0} closeDelay={0}>

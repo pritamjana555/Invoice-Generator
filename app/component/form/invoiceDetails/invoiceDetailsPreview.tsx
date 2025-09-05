@@ -12,10 +12,10 @@ export const InvoiceDetailsPreview: React.FC<
   InvoiceItemDetails & { onClick?: (step: string) => void }
 > = ({ note, discount, taxRate, items, currency = "INR", onClick }) => {
   const [mounted, setMounted] = useState(false);
-const { bgOpacity } = useScrollContext();
-      const bg = useMotionTemplate`rgba(0,0,0,${bgOpacity})`;
-  useEffect(() => setMounted(true), []); 
-const [isMobile, setIsMobile] = useState(false);
+  const { bgOpacity } = useScrollContext();
+  const bg = useMotionTemplate`rgba(0,0,0,${bgOpacity})`;
+  useEffect(() => setMounted(true), []);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 760);
@@ -34,7 +34,7 @@ const [isMobile, setIsMobile] = useState(false);
   const totalAmount = discountAmount + taxAmount;
 
   return (
-    <motion.div style={isMobile ? { backgroundColor: bg } : {}} className="group cursor-pointer w-full" onClick={() => onClick && onClick("3")}>
+    <motion.div style={isMobile ? { backgroundColor: bg } : {}} className=" group cursor-pointer w-full overflow-y-scroll" onClick={() => onClick && onClick("3")}>
       {!!onClick && mounted && (
         <>
           <ChevronDown className="animate-pulse w-4 h-4 sm:w-5 sm:h-5 text-[#002147] rotate-[135deg] group-hover:block hidden absolute top-0 left-0" />
@@ -78,12 +78,11 @@ const [isMobile, setIsMobile] = useState(false);
       </div>
 
       {/* Items list */}
-      <div className={`overflow-x-auto ${items.length > 6 ? "overflow-y-scroll" : ""}`}>
+      <div className={`overflow-x-auto max-[760px]:${items.length > 3 ? "overflow-y-scroll" : ""}`}>
         {items.map(({ itemDescription, amount, qty }, index) => (
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 items-center border-b ${
-              index === 0 ? "border-t" : ""
-            } border-dashed px-4 sm:px-6 md:px-9 py-1`}
+            className={`grid grid-cols-1 sm:grid-cols-2 items-center border-b ${index === 0 ? "border-t" : ""
+              } border-dashed px-4 sm:px-6 md:px-9 py-1`}
             key={index}
           >
             <p className="truncate text-xs sm:text-sm font-medium text-gray-600">{itemDescription}</p>
@@ -104,15 +103,17 @@ const [isMobile, setIsMobile] = useState(false);
       </div>
 
       {/* Footer */}
-      <div className="grid grid-cols-1 sm:grid-cols-2">
-        {note && (
-          <div className="pt-6 pb-4">
-            <p className="text-xs font-medium text-neutral-400 pb-1 px-4 sm:px-6 md:px-7">Note</p>
-            <p className="text-xs sm:text-sm font-medium text-neutral-400 px-4 sm:px-6 md:px-7 break-words">{note}</p>
-          </div>
-        )}
+      <div className="grid grid-cols-2 sm:grid-cols-2">
+        <div className="space-y-2">
+          {note && (
+            <div className="pt-6 pb-4">
+              <p className="text-xs font-medium text-neutral-400 pb-1 px-4 sm:px-6 md:px-7">Note</p>
+              <p className="text-xs sm:text-sm font-medium text-neutral-400 px-4 sm:px-6 md:px-7 break-words">{note}</p>
+            </div>
+          )}
+        </div>
 
-        <div>
+        <div className="space-y-2">
           <div className="flex justify-between items-center pl-5 px-4 sm:px-6 md:px-7 border-b border-dashed py-1">
             <p className="text-xs sm:text-sm font-medium text-gray-600">Subtotal</p>
             <p className="text-xs sm:text-sm font-medium text-gray-600">

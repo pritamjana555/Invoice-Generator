@@ -18,7 +18,7 @@ export const YourDetailsPreview: React.FC<YourDetails> = ({
 
 
   return (
-    <div>
+    <div className="">
       <p className="text-[11px] text-neutral-400 font-semibold uppercase pb-3.5">
         From
       </p>
