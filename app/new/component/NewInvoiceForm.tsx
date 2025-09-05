@@ -69,9 +69,9 @@ export const NewInvoiceForm = () => {
 
           <motion.div style={isMobile ? { backgroundColor: bg } : {}}
 
-            className=" min-h-[866px]  max-[760px]:sticky max-[760px]:top-0 relative h-full w-full flex justify-center items-center p-4 md:p-0 shadow-slate-900 "
+            className=" min-h-[866px] max-[760px]:sticky max-[760px]:top-0 relative h-full w-full flex justify-center items-center p-4 md:p-0 shadow-slate-900 "
           >
-             <div className="absolute  inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_0.5px,transparent_1px)] max-[760px]:bg-[radial-gradient(#C0C0C0_0.5px,transparent_1px)] [background-size:16px_16px]"></div> 
+             <div style={{transformOrigin: "bottom",}} className="absolute origin-bottom scale-y-150 inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_0.5px,transparent_1px)] max-[760px]:bg-[radial-gradient(#C0C0C0_0.5px,transparent_1px)] [background-size:16px_16px]"></div> 
 
             <UserDataPreview />
           </motion.div>

@@ -37,13 +37,25 @@ export const PreviewDetails = ({
   const bg = useMotionTemplate`rgba(0,0,0,${bgOpacity})`;
   const [isMobile, setIsMobile] = useState(false);
 
-  const [isSmallHeight, setIsSmallHeight] = useState(false);
+const [isSmallHeight, setIsSmallHeight] = useState(false);
+const [isSmallWidth, setIsSmallWidth] = useState(false);
 
 useEffect(() => {
   const checkHeight = () => setIsSmallHeight(window.innerHeight <= 1020);
+  const checkWidth = () => setIsSmallWidth(window.innerWidth <= 760);
+
+  // run once on mount
   checkHeight();
+  checkWidth();
+
+  // add resize listeners
   window.addEventListener("resize", checkHeight);
-  return () => window.removeEventListener("resize", checkHeight);
+  window.addEventListener("resize", checkWidth);
+
+  return () => {
+    window.removeEventListener("resize", checkHeight);
+    window.removeEventListener("resize", checkWidth);
+  };
 }, []);
 
 
@@ -62,29 +74,32 @@ useEffect(() => {
     >
       <Magnetic intensity={0.1} actionArea="global" range={200}>
         <div  
-        style={{ maxHeight: "1020px",
-    transform: isSmallHeight ? "scale(0.8)" : "",}}
+        style={{ maxHeight: "1080px",
+    maxWidth: "760px",
+    transform: isSmallHeight || isSmallWidth ? "" : "scale(1)",}}
         className=" 
           max-[760px]:sticky max-[760px]:top-0
          max-[760px]:overflow-y-scroll
           
           h-full
-          
+          max-[760px]:scale-[0.7]
      max-[760px]:h-screen
-     
-         md:w-[450px]
+     lg:scale-100
+     xl:scale-100
+     2xl:scale-100 
+    md:w-[450px]
     lg:w-[560px] 
     xl:w-[600px] 
     2xl:w-[640px] 
     w-full 
     mx-auto
-    overflow-hidden bg-white mt-0 rounded-2xl shadow-md shadow-slate-200 max-[760px]:shadow-gray-400 border border-dashed max-[760px]:border-none justify-center items-center">
+    overflow-hidden bg-white  rounded-2xl shadow-md shadow-slate-200 max-[760px]:shadow-gray-400 border border-dashed max-[760px]:border-none justify-center items-center">
 
           {/* Invoice Terms */}
           <HoverCard openDelay={0} closeDelay={0}>
             <HoverCardTrigger><InvoiceTermsPreview {...invoiceTerms} onClick={onClick} /></HoverCardTrigger>
             <HoverCardContent
-              side="top"
+              side="bottom"
               align="center"
               className="bg-black text-white text-xs w-fit pl-1.5 py-1.5 rounded-full shadow-lg flex items-center gap-2  font-medium animate-in fade-in-0 zoom-in-95 duration-100"
             >
