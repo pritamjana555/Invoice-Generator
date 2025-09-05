@@ -22,7 +22,7 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
   });
 
   // ✅ Smooth fade: bottom = 0 → top = 0.4
-  const bgOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.8]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 1], [0, 0.4]);
 
   return (
     <ScrollContext.Provider value={{ targetRef, bgOpacity }}>

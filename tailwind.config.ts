@@ -42,6 +42,7 @@ const config: Config = {
         xxs: "11px",
       },
       screens: {
+        
         ipad: "834px",
         "ipad-air": "820px",
         "ipad-mini": "744px",

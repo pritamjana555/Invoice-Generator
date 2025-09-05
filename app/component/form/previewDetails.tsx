@@ -36,6 +36,17 @@ export const PreviewDetails = ({
   const { bgOpacity } = useScrollContext();
   const bg = useMotionTemplate`rgba(0,0,0,${bgOpacity})`;
   const [isMobile, setIsMobile] = useState(false);
+
+  const [isSmallHeight, setIsSmallHeight] = useState(false);
+
+useEffect(() => {
+  const checkHeight = () => setIsSmallHeight(window.innerHeight <= 1020);
+  checkHeight();
+  window.addEventListener("resize", checkHeight);
+  return () => window.removeEventListener("resize", checkHeight);
+}, []);
+
+
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 760);
     check();
@@ -50,13 +61,15 @@ export const PreviewDetails = ({
       className=""
     >
       <Magnetic intensity={0.1} actionArea="global" range={200}>
-        <div className=" 
+        <div  
+        style={{ maxHeight: "1020px",
+    transform: isSmallHeight ? "scale(0.8)" : "",}}
+        className=" 
           max-[760px]:sticky max-[760px]:top-0
-          max-[760px]:-mt-20
-          max-[760px]:mb-10
-          max-[760px]:scale-[0.60]
+         max-[760px]:overflow-y-scroll
+          
           h-full
-          max-[760px]:overflow-y-scroll
+          
      max-[760px]:h-screen
      
          md:w-[450px]
