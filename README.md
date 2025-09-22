@@ -2,9 +2,6 @@
 Create professional invoices in a flash. Fast, free, and simple.
 This project provides a user-friendly invoice generation tool for freelancers, small businesses, and contractors. Create professional, customized invoices quickly and easily to ensure you get paid on time, every time.
 
-## ⛰️ Preview
-
-![806shots_so](https://invoice-generator-u495.vercel.app/new)
 
 ## Key Features
 
